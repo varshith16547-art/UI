@@ -1,0 +1,13 @@
+<script>
+    
+    function greet(name) {
+  console.log("Hello, " + name);
+}
+
+function processUserInput(callback) {
+  const name = "Varshith";
+  callback(name); // calling the callback
+}
+
+processUserInput(greet);
+</script>
