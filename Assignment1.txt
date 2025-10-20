@@ -76,9 +76,9 @@ let acc = '12345678987';
 let masked = '';
 for (let i = 0; i < acc.length; i++) {
     if (i < 2 || i >= acc.length - 2) {
-        masked += acc[i];
+        masked = masked + acc[i];
     } else 
-        masked += '*';
+        masked = masked + '*';
     }
 console.log(masked);
 </script>

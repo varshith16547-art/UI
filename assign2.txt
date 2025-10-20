@@ -1,0 +1,211 @@
+1. Print the occurence of each character in a string
+   input: 'entertainment'
+   output: { e:3 , n:2 , t: 3 ....}
+
+
+<script>
+    let str='entertainment';
+    let f={};
+    for(let ch of str)
+{
+    if(f[ch])
+     f[ch]++;
+    else 
+     f[ch]=1;
+}
+console.log(f);
+</script> 
+
+
+2. Print the character which is repeated max no of times
+   input: 'hello world'
+   output : 'L'
+
+
+<script>
+    let str='hello world';
+    let f={};
+    let char='';
+    let count=0;
+    for(let ch of str)
+{
+    if(ch!==' ') {
+     if(f[ch])
+     f[ch]++;
+    else 
+     f[ch]=1;
+    
+    if(f[ch]>count)
+    {
+        count=f[ch];
+        char=ch;
+    }
+}
+}
+console.log(char);
+</script>
+
+
+3. Swap The case for Each Character in a string 
+   input: 'Hello World'
+   output: 'hELLO wORLD'
+
+   <script>
+    let str="Hello World";
+    let res='';
+    for(let ch of str){
+    if(ch===ch.toUpperCase())
+    res=res+ch.toLowerCase();
+    else
+    res=res+ch.toUpperCase();}
+    console.log(res);   
+   </script>
+
+
+
+4. Print the Abbreviation for a string
+   input: 'Rabindra Nath Tagore'
+   output: 'R. N. tagore'
+
+
+ <script>
+    let str= 'Rabindra Nath Tagore';
+    let word= str.split(' ');
+    let name='';
+    for(let i=0;i<word.length-1;i++){
+        name=name+(word[i][0].toUpperCase()+'. ');
+    }
+    name=name+word[word.length-1];
+    console.log(name);   
+   </script>
+
+
+5. Shift the characters by the next character
+   input:  'abcxyz'
+   output: 'bcdyza'
+
+
+<script>
+    let str='abcxyz';
+    let result= str.split('').map(c => {
+        if (c === 'z') return 'a';
+        else if (c === 'Z') return 'A';
+        else return String.fromCharCode(c.charCodeAt(0) + 1);
+    }).join('');
+    console.log(result);
+</script>
+
+
+6. Ask user to enter a sequence of parantheses and validate 
+   input: '([{ }])'
+   output : true
+
+
+<script>
+
+    function check(str){
+        let stack=[];
+        let pairs={
+            ')':'(',
+            '}':'{',
+            ']':'['}
+        for(let c of str){
+            if(c==='(' || c==='{' || c==='[')
+            stack.push(c);
+            else if(c===')' || c==='}' || c===']'){
+                if(stack.pop()!==pairs[c])
+                return false;
+            }
+        }return stack.length===0;
+    } 
+    
+    console.log(check('([{ }])')); // true
+</script>
+
+
+7. Ask user to enter a 3 letter word, print all the permutations using those 3 letters.
+    input: 'ABC'
+    output: ABC , ACB , BCA, BAC ...
+
+
+<script>
+    function permute(str, prefix='')
+    {
+        if (str.length === 0) {
+            console.log(prefix);
+        } else {
+            for (let i in str) {
+                let r
+                em = str.slice(0, i) + str.slice(i + 1);
+                permute(rem, prefix + str[i]);
+            }
+        }
+    }
+    permute('ABC');
+</script>
+
+
+8. Ask user to enter a number and convert that to Roman value
+   input:   9    12
+   output : IX   XII
+
+ <script>
+    function roman(num){
+        let val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+        let syms = ["M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"];
+        let romannum = '';
+        for (let i in val) {
+            while (num >= val[i]) {
+                romannum= romannum + syms[i];
+                num= num - val[i];
+            }
+        }
+        return romannum;
+    }
+    console.log( roman(20));
+   </script>
+
+
+9. Ask user to enter a roman string and convert that to integer value
+   input:   IX    XII
+   output : 9     12
+
+<script>
+    function roman(str){
+        const map = {I:1, V:5, X:10, L:50, C:100, D:500, M:1000};
+        let total = 0;
+
+        for (let i in str){
+            i=Number(i);
+           if (map[str[i]] < map[str[i+1]])
+                total= total - map[str[i]];
+           else 
+                total= total + map[str[i]]; }
+     return total;      
+    }
+console.log(roman('IX'));  
+</script>
+
+
+10. Ask user to enter a  string , and display in below format
+    input: aaabbc
+    output : a3b2c1
+    <script>
+let str = prompt("Enter a string:");
+let result = '';        
+let count = 1;
+for(let i in str)
+{
+    i=Number(i);
+    if(str[i] == str[i+1])
+    {
+        count++;
+    }
+    else
+    {
+        result += str[i] + count;
+        count = 1;
+    }
+} console.log(result);
+    </script>
+  
