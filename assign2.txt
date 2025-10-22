@@ -89,7 +89,7 @@ console.log(char);
     let str='abcxyz';
     let result= str.split('').map(c => {
         if (c === 'z') return 'a';
-        else if (c === 'Z') return 'A';
+        else if (c === 'Z') return 'A'; 
         else return String.fromCharCode(c.charCodeAt(0) + 1);
     }).join('');
     console.log(result);
@@ -135,8 +135,7 @@ console.log(char);
             console.log(prefix);
         } else {
             for (let i in str) {
-                let r
-                em = str.slice(0, i) + str.slice(i + 1);
+                let rem = str.slice(0, i) + str.slice(i + 1);
                 permute(rem, prefix + str[i]);
             }
         }
