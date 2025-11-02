@@ -1,0 +1,114 @@
+<h3 class="textcenter"> Let's learn angular DataBinding</h3>
+<div class="border border-2 rounded-2 p-2 m-2">
+    <div> name is {{myname}}</div> 
+    <div> Name is <span [innerText]="myname"></span></div>
+    <img src="{{img_url}}" alt=""/>
+    <img [src]="img_url" alt=""/>
+    <img bind-src="img_url" alt=""/>
+<div>
+
+    1 way: <input type="text" value="{{myname}}"/>
+     1 way: <input type="text" [value]="myname" class="mx-2"/>
+    2 way <input type="text" [(ngModel)]="myname" class="mx-2">
+
+</div>
+<div class="class m-1">
+    <button class="class btn btn-primary">click me</button>
+    <button class="class btn btn-primary" disabled="{{flag}}">Click me </button>
+     <button class="class btn btn-primary" [disabled]="flag">Click me </button>
+      <button class="class btn btn-primary" bind-disabled="flag">Click me </button>
+</div>
+<button class="class btn btn-primary" (click)="toggleflag()">toggleflag</button>
+<div class="center">
+
+<hr class="border-top border-2 border-danger my-4" />
+<div>question 1: Have a paragraph & a toggle button, on click of the button control the visibility(Show/Hide) of the paragraph</div>
+
+<div class="class m-1 p-2 m-1">
+    <p [hidden]="!flag"> this will vanish </p> 
+    <button class="class btn btn-primary" (click)="toggleflag()"> hit me</button>
+</div>
+<hr class="border-top border-2 border-danger my-4" />
+
+
+<div>question2: Create a text-area with maxLength=100, as the user keeps typing display updated Remaining characters.</div>
+ <div class="class m-1 p-2 m-1">
+    <textarea maxlength="100"[(ngModel)]='msg'></textarea>
+    <div [class]="msg"></div>
+    <div> Remaining: {{ 100-msg.length }}</div>
+ </div>
+<hr class="border-top border-2 border-danger my-4" />
+
+
+<div>question 3:  Create dropdown with state names, when user changes dropdown value, print the selected dropdown value in a div</div>
+<div class="class m-1 p-2 m-1">
+    <select name= "state" [(ngModel)]="thestate">
+<option value="" > select the state</option>
+<option value="Tennessee"> Tennessee </option>
+<option value="Florida">Florida</option>
+<option value="Georgia" class="states">Georgia</option>
+<option value="Alabama" class="states"> Alabama </option>
+<option value="North Carolina" class="states"> North Carolina</option>
+<option value="California" class="states"> California </option>
+<option value="Texas" class="states"> Texas </option>
+<option value="Virginia" class="states"> Virginia </option>
+<option value="Illinois" class="states"> Illinois</option>
+<option value="New York" class="states"> New York</option>
+    </select>
+</div>
+<div class="class m-1 p-2 m-1"> selected state : {{thestate}} </div>
+<hr class="border-top border-2 border-danger my-4" />
+
+
+<div>question 4 :have 2 inputBoxes, and a dropdown(+,-,*,/) and perform arithmetic operations</div>
+<div class="class m-1 p-2 m-1"> 
+    <input type="number" [(ngModel)] ='num1'/>
+    <input type="number" [(ngModel)]= 'num2'/>
+    <select [(ngModel)]='op'> 
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <button class="btn btn-primary" (click)="calculation()"> calculate </button>
+    <div class=""> Result: {{ result }}</div>
+</div>
+<hr class="border-top border-2 border-danger my-4" />
+
+
+<div>question 5: create a input box, toggle the type of that input box to (text/password)</div>
+<div class="class m-1 p-2 m-1"> 
+    <input type="{{ flags? 'password' : 'text'}}" value="Text">
+    <button class="btn btn-primary" (click)="flags=!flags"> toggle</button>
+<div> </div>
+    <hr class="border-top border-2 border-danger my-4" />
+
+
+<div>question 6: counter example with 3 controls.</div>
+<div class="class m-1 p-1 m-1"> 
+<button class="btn btn-primary" (click)="ct=ct+1">Increment</button>
+<button class="btn btn-secondary" (click)="ct=ct-1">Decrement</button>
+<button class="btn btn-danger" (click)="ct=0">Reset</button>
+<p>Result: {{ ct }}</p> 
+<hr class="border-top border-2 border-danger my-4" />
+
+
+<div class="">Question 7: toggle button and control Dark/Light theme of a page.</div>
+<div class="border-3 rounded-3 p-2 m-2">
+    <button class="btn btn-primary" (click)="theme()">{{ flag ? 'Light Theme': 'Dark Theme'}}</button>
+</div>
+
+
+<hr class="border-top border-2 border-danger my-4" />
+<div>question 8: Celcius to Farenheit</div>
+<div class="border-3 rounded-2 p-1 m-2"></div>
+<input type="number" [(ngModel)]="celcius" placeholder="Enter C" class="m-2 p-1">
+<button class="btn btn-primary" (click)="fun()" >Convert</button>
+<div class="me-2">
+    <input type="number" [(ngModel)]="farenheit" placeholder="Farenheit is" class="m-2 p-1">
+    
+</div>
+
+</div>
+
+
