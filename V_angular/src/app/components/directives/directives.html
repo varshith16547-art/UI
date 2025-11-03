@@ -1,4 +1,5 @@
-<h3 class="text-center">Let's Learn Directives</h3>
+<h3 class="text-center">Let's Learn Directives. </h3>
+
 
 <!-- <div class="border border-2 rounded-2 p-2 m-2">
   <div>If-Else Before Angular 17</div>
@@ -66,4 +67,150 @@
       }
     </tbody>
   </table>
+
+  <div class="border p-2 m-2 rounded-2">
+  <h3>Task List</h3>
+
+  <select [(ngModel)]="filter">
+    <option>All</option>
+    <option>Completed</option>
+    <option>Pending</option>
+  </select>
+
+  @if(filter === 'All'){
+    @for(task of tasks; track $index){
+      <div>
+        <input type="checkbox" [checked]="task.completed" (change)="toggle(task)" />
+        <span [ngClass]="{'text-decoration-line-through': task.completed}">
+          {{task.title}}
+        </span>
+      </div>
+    }
+  }
+
+  @if(filter === 'Completed'){
+    @for(task of tasks; track $index){
+      @if(task.completed){
+        <div>
+          <input type="checkbox" [checked]="task.completed" (change)="toggle(task)" />
+          <span class="text-decoration-line-through">{{task.title}}</span>
+        </div>
+      }
+    }
+  }
+
+  @if(filter === 'Pending'){
+    @for(task of tasks; track $index){
+      @if(!task.completed){
+        <div>
+          <input type="checkbox" [checked]="task.completed" (change)="toggle(task)" />
+          {{task.title}}
+        </div>
+      }
+    }
+  }
+</div>
+
+
+<div class="border p-2 m-2 rounded-2">
+  <h3>Product List</h3>
+
+  <label>Select Category: </label>
+  <select [(ngModel)]="category">
+    <option>All</option>
+    <option>men's clothing</option>
+    <option>jewelery</option>
+    <option value="">Electronics</option>
+  </select>
+
+  <div class="m-2">
+
+    
+    @if(category === 'All'){
+      @for(product of products; track $index){
+        <div class="border p-1 m-1">
+          <img [src]="product.image" width="100" height="100">
+          <div><b>{{product.title}}</b></div>
+          <div>Category: {{product.category}}</div>
+          <div>Price: ${{product.price}}</div>
+          <div>Rating: {{product.rating.rate}} ({{product.rating.count}} reviews)</div>
+        </div>
+      }
+    }
+
+    
+    @if(category === "men's clothing"){
+      @for(product of products; track $index){
+        @if(product.category === "men's clothing"){
+          <div class="border p-1 m-1">
+            <img [src]="product.image" width="100" height="100">
+            <div><b>{{product.title}}</b></div>
+            <div>Category: {{product.category}}</div>
+            <div>Price: ${{product.price}}</div>
+            <div>Rating: {{product.rating.rate}} ({{product.rating.count}} reviews)</div>
+          </div>
+        }
+      }
+    }
+
+    
+    @if(category === 'jewelery'){
+      @for(product of products; track $index){
+        @if(product.category === 'jewelery'){
+          <div class="border p-1 m-1">
+            <img [src]="product.image" width="100" height="100">
+            <div><b>{{product.title}}</b></div>
+            <div>Category: {{product.category}}</div>
+            <div>Price: ${{product.price}}</div>
+            <div>Rating: {{product.rating.rate}} ({{product.rating.count}} reviews)</div>
+          </div>
+        }
+      }
+    }
+
+    @if(category === ''){
+      <p>No products found in this category!</p>
+    }
+  </div>
+</div>
+
+
+
+
+
+<h4>Shopping cart</h4>
+@for(item of cartItems;track item.id){
+    <div class="cart-item">
+        <p><b>{{item.name}}</b></p>
+        <p>Price: ${{item.price}}</p>
+         <div>
+            <button class="btn btn-primary mt-2 mx-2" (click)="decrease(item)">-</button> 
+            {{item.qty}}
+            <button class="btn btn-primary mt-2 mx-2" (click)="increase(item)">+</button> 
+         </div>
+
+         <p>Item Total:${{item.price*item.qty}}</p>
+    </div>
+}
+@empty{
+    <p>No items in the cart</p>
+}
+<p><b>Grand Total:${{getTotal()}}</b></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
