@@ -1,14 +1,14 @@
 <h3 class="text-center">Let's Learn Directives. </h3>
 
 
-<!-- <div class="border border-2 rounded-2 p-2 m-2">
+<div class="border border-2 rounded-2 p-2 m-2">
   <div>If-Else Before Angular 17</div>
   <div>
     <input type="number" [(ngModel)]="num" />
   </div>
   <div *ngIf="num % 2 === 0">{{ num }} is Even</div>
   <div *ngIf="num % 2 !== 0">{{ num }} is Odd</div>
-</div> -->
+</div>
 
 <div class="border border-2 rounded-2 p-2 m-2">
   <div>If-Else After Angular 17</div>
@@ -195,22 +195,66 @@
 @empty{
     <p>No items in the cart</p>
 }
-<p><b>Grand Total:${{getTotal()}}</b></p>
+<p><b>Grand Total:${{getTotal()}}</b></p> 
 
 
 
 
+<div class="border p-2 m-2 rounded-2">
+  <h3>Employee Table</h3>
 
+  <table border="3" cellpadding="20">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Salary</th>
+      </tr>
+    </thead>
 
+    <tbody>
+      @for(emp of employees2; track $index){
+        <tr
+          [style.background-color]="
+            emp.role === 'Manager' ? 'lightyellow' :
+            emp.role === 'Developer'  ? 'lightblue' :
+            emp.role === 'Tester' ? 'lightpink' : 'white'
+          "
+          [ngClass]="{'inactive': emp.status === 'Inactive'}"
+        >
+          <td>{{ emp.eId }}</td>
+          <td [ngClass]="{'manager-style': emp.role === 'Manager'}">{{ emp.name }}</td>
+          <td>{{ emp.gender }}</td>
+          <td [ngClass]="{'manager-style': emp.role === 'Manager'}">{{ emp.role }}</td>
+         <td>{{ emp.status }}</td>
 
-
-
-
-
-
-
-
-
-
-
+          
+          <td>
+            <span
+              [ngStyle]="{
+                'color': emp.sal > 50000 ? 'green' : 'red',
+                'background-color': emp.sal > 70000 ? 'lightgreen' :
+                                    (emp.sal >= 40000 && emp.sal <= 70000) ? 'orange' : 'lightcoral',
+                'padding': '9px 9px',
+                'border-radius': '10px'
+              }"
+            >
+              {{ emp.sal }}
+            </span>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
 </div>
+
+
+
+
+
+
+
+ </div>

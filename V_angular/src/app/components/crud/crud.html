@@ -1,0 +1,95 @@
+<div class="border p-2 m-4 rounded-2">
+  <h3>Employee Table</h3>
+
+  <table border="3" cellpadding="20" style="width: 100%;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Salary</th>
+        <th>View/Edit</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for(emp of employees2; track $index){
+      <tr
+        [style.background-color]="
+          emp.role === 'Manager' ? 'lightyellow' :
+          emp.role === 'Developer' ? 'lightblue' :
+          emp.role === 'Tester' ? 'lightpink' : 'white'
+        "
+        [ngClass]="{'inactive': emp.status === 'Inactive'}"
+      >
+        <td>{{ emp.eId }}</td>
+        <td [ngClass]="{'manager-style': emp.role === 'Manager'}">{{ emp.name }}</td>
+        <td>{{ emp.gender }}</td>
+        <td>{{ emp.role }}</td>
+        <td>{{ emp.status }}</td>
+
+        <td>
+          <span
+            [ngStyle]="{
+              'color': emp.sal > 50000 ? 'green' : 'red',
+              'background-color': emp.sal > 70000 ? 'lightgreen' :
+                                  (emp.sal >= 40000 && emp.sal <= 70000) ? 'orange' : 'lightcoral',
+              'padding': '9px 9px',
+              'border-radius': '10px'
+            }"
+          >
+            {{ emp.sal }}
+          </span>
+        </td>
+
+        <td style="text-align: center;">
+          <fa-icon
+            [icon]="faEye"
+            class="text-primary mx-2"
+            title="View Details"
+            (click)="viewEmp(emp)"
+            data-bs-toggle="modal"
+            data-bs-target="#empModal"
+          ></fa-icon>
+
+          <fa-icon
+            [icon]="faTrash"
+            class="text-danger mx-2"
+            title="Delete Employee"
+            (click)="deleteEmp(emp.eId)"
+          ></fa-icon>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+
+  <div class="my-3">
+    <h5>Add Employee</h5>
+    <input [(ngModel)]="newEmp.eId" placeholder="ID" type="number" />
+    <input [(ngModel)]="newEmp.name" placeholder="Name" />
+    <input [(ngModel)]="newEmp.sal" placeholder="Salary" type="number" />
+    <input [(ngModel)]="newEmp.gender" placeholder="Gender" />
+    <input [(ngModel)]="newEmp.role" placeholder="Role" />
+    <input [(ngModel)]="newEmp.status" placeholder="Status" />
+    <button class="btn btn-success btn-sm" (click)="addEmp()">Add</button>
+  </div>
+
+
+  <div class="modal fade" id="empModal">
+    <div class="modal-dialog">
+      <div class="modal-content p-3">
+        <h5>Employee Details</h5>
+        <p><b>ID:</b> {{ selectedEmp?.eId }}</p>
+        <p><b>Name:</b> {{ selectedEmp?.name }}</p>
+        <p><b>Gender:</b> {{ selectedEmp?.gender }}</p>
+        <p><b>Role:</b> {{ selectedEmp?.role }}</p>
+        <p><b>Status:</b> {{ selectedEmp?.status }}</p>
+        <p><b>Salary:</b> {{ selectedEmp?.sal }}</p>x
+      </div>
+    </div>
+  </div>
+</div>

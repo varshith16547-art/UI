@@ -1,0 +1,67 @@
+<h3 class="text-center mt-3 mb-4 fw-bold text-primary ">
+   Product List
+</h3>
+
+<div class="container">
+  
+  <div class="row mb-3">
+   
+    <div class="col-sm-2">
+      <select class="form-select shadow-sm" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+        @for(category of categoryArr; track $index) {
+          <option>{{ category }}</option>
+        }
+      </select>
+    </div>
+
+    
+    <div class="col-sm-8 items-center">
+      <input
+        type="search"
+        class="form-control "
+        placeholder="Search..."
+        [(ngModel)]="searchText"
+      />
+      <button class="btn btn-primary ms-2" (click)="onSearch()">Search</button>
+    </div>
+
+    
+    <div class="col-sm-2 text-end">
+      <button class="btn btn-secondary mx-2" (click)="sortDesc()">SORT HIGH</button>
+      <button class="btn btn-primary mx-3" (click)="sortAsc()">SORT LOW</button>
+    </div>
+  </div>
+
+ 
+  <div class="row">
+    @for(product of filteredProducts | paginate: { itemsPerPage: 4, currentPage: p }; track $index) {
+      <div class="col-sm-3 mb-4">
+        <div class="card product-card text-center h-100 ">
+          <img [src]="product.image" class="card-img-top" style="height: 200px" />
+          <div class="card-body">
+            <h5 class="card-title  text-primary">
+              {{ product.category }}
+            </h5>
+            <p class="card-text text-truncate text-muted small">
+              {{ product.description }}
+            </p>
+            <p class="card-text fw-semibold">{{ product.title }}</p>
+            <p class="card-text fw-bold ">Price: ${{ product.price }}</p>
+            <p class="card-text">
+              Ratings:
+              <fa-icon [icon]="faStar" class="star-icon"></fa-icon>
+              {{ product.rating.rate }}
+            </p>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+ 
+  <div class="row">
+    <div class="col text-center mt-3">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

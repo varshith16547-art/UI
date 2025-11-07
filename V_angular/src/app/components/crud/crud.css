@@ -1,0 +1,8 @@
+.manager-style {
+  font-weight: bold;
+  color: darkblue;
+}
+
+.inactive {
+  opacity: 0.6;
+}

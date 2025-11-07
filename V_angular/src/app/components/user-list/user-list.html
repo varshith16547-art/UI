@@ -1,0 +1,34 @@
+<h3 class="text-center"> User List</h3>
+<div class="container">
+    <div class="row">
+       @for (user of userArr | paginate: { itemsPerPage: 4, currentPage: p}; track $index) {
+        <div class="col-sm-3">
+            <div class="card">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAilBMVEX///8vLy8tLS0pKSkeHh4bGxsgICAmJiYjIyMYGBgWFhb8/Pz39/cTExP19fXBwcHU1NRcXFw8PDw3Nze0tLTHx8dFRUXu7u5NTU1fX1/Z2dno6OhUVFSgoKCHh4eUlJSrq6tubm54eHi4uLiBgYHg4OAFBQVpaWmampqEhITNzc2Ojo5PT0+lpaVYCaQkAAAIHElEQVR4nO2daZuiOBCArdxcIqB44AGoaGv7///ehp5ndmdmd7qFAgyzeT/Mh2ljVzpJHUmlMplYLBaLxWKxWCwWi8VisVgsFovFYrFYLBaLxWKx/JF406Vm6r1ajn44h/dimyYASbxal9fw/Gf1M7uuJFeUENAQQqXiKol2m1fL1RWzdaUIEKqYw4Wo/5FU95WKgJWLP2AosyKgQFQQF4f5bKOZhfm+SB2uew3SjXfLV0uI5EgkECc5bPyf/tvPwkNaMd13AbtRj+PBJSDi43//cDmPmAL989uwQnVJ6QKRj08+cN4TBaS6DyZRd0w34fy6FUCT8+cfzE4BAbYe22qclQnjTOsSlX4t+i1RIJ/4nEEsL4GszQNVTvGMFvELBpSMqIsb0OqTyVV02c+ebLJ3gKbTXqXqkLN2Xdhqnvlff/QfDg6oS18SdYyfUnAPjZu9MeC7HsTpgb0Alrdot5ZQjcJRPXNQb20aTiXQ966l6YOTBGi0Av8mDIDPO5amB7wAxGc+zGdcJEnNd1GPHJx2Q6itjADH/EEsqCzbN5Y06lCWfkgIaz8MNw7BF17syzkrcLP2zWOirt0J0wsLTtK2y1BzUCTtTphe2AmK8b1mLlSGe6cnKU+Y9g44i65k6YeC4hZSRFpb04FYU5Fj2u8lwtgMgbcl7De7Ts+h1/G6K2F6wXsnPMR8Qc7IqithesFfEY7SFEdO4q6E6QUP28PQ+B5iZ+nC+B5uCUdpmpsDidkBVERb7WD8jXZqEoTXNwAXKlDbSXUPzXbbtE/TfJvtB8wfQ6xfan4Pr4oWmPYLhyRdydIPc0a2GF1ovD3U2p7EGE2h/0KGh8AbBQxzhvQQZNuZML2wBAgwW/N6HZt+PhPjwqc3KVsdCQzIBWcQdQRteIyPnWYJ0nMfgJADtG/tBeA+e2z8Ks4BVO2Vab2baLZLowkAMc9yhpkBw6Bnqdv+4GLHwTE9P2pLMdv6y5SYbg+XBFzMINSKyuz4cIaUcClAmZ2uoGODFSa2mMaEm70Q5wx3iuuviOFHM39+D4+MRJhZ6qfEcHOxcFBnwJMpADPbbZsxpC7lIM3OVThL4JgYX7u1YHaeqY7xXYw9M38nSsf4qIOLhyCmZ+9FuG39uzL8lHsyKaXcI5pfkJkOA4BMqEmReQADgDymHkF8iNuH0MYiMNtYTCZehdlL0uEh61CYfkClX17VCBJMTxKhalLzsy/1RHNAtV1K2qsNzPa7a3R00M5oe5NpRHE7BANx1eFBvEoa3ij0yiQFCoHp1rDGiwQQQqpmydCzqr7o7Zjusn3DL10BTdO9tR0FjsvjGJIsBwia9fDmQhKabux/YJo0vVZQp8D3JEwv+HHTDaWj6Ymlv5I2PenMjU9R+IVt04z0AzLVaHB0INzMIGIT4gZHB8LNXGhkDsfw3HQY1CRMzAJwzd4n/RU/aHb5JRcgehOmHyLaKIhKCS5r8wUcHXCe3xrWsf0Iwqaf8WJCVs+uxCwhdFzWsOboAo0fT6xF73jQYYUztiGcfJS6IOKJwjNloLSfbno2239yryh8bRW9FQHp5gPI0wObC/36Jpr3rtUo4urwa8mfuGtXXyQy++T+M57sITM94fI3+PMiJU/1kKSX3PiMxH8TAqfkSU1DKE9GN1MflVaRjFdfHyaWAecSSJX3L1SXLCog7DQ/Hr/e4PXDxfHEAKpR2Xxf+2zQJGNhpkdxBJVb/mHHQDQbkgUfRfmd73gpaVxJqZRjcr4POp5tmlVz44C7nDkgXslBNq8b8E6BjyMKDokC2iK5bSkpqBGYxc3FrSvutXGlzysBxC3M3pA6n4RW+8G9nQ/mv9VugjA40sjK2jnhaXvTPUt57QqVZvZxVgR1ycsYZ9XymOk+BqVxDo4XrnX/gCUPbJDg7xJe14hehya5ONNdyqmen/TRxW0QP5d6rlIe70y5W7IpXaElYml3Xtd8Vf/FhGvCZF3Ot/X0VOzSrSVbXLjSkzV4z1979D07JXpCEab23VuxzV5ppUM4nF42kNNHyvTwSSfpaQ/Cz1O3/gUsfUVlen9RVKIePtLrWtmc4KMyfXUJh93J2dwTl9bLZJv3bZyXeeTqFUmdZD8byn5ku/e6Fjnl4m2Yi3SbO3Xq5xX46jqA0zrNt6yenUJEQ5rkcC0+fivfzns1ktOwCGr9ppzVbmjXMXts6xcxCAuKY096x1+UiUM/Ht24v0Z/b+5xrVspJ+Wie72T7WP+8e3uKx9O8W5lwOu/Mk/23U6irAhq3cLI5eVHDF54IbUBUVXRYR9zbdm1blm/2IP6znJ+UaKOlfOOvtAr3TouGly3fEa2SxiAW3ayYPxIALIKWy/s9FwV6y66uFWgIpPG7zvZh2T47zkJEE89NDI8XiGAY27KfXA0+mWNtURXVp4mhBp8BcJPCYlxxv9geJ2KmZ6nqFScKQWFnui9UkqCKng65+CYYeV/R+aAi/GztsT4i8drikkQ9yvji8BPjgyc9q1vTvsHR4ZiGWDexJgz4+//TyYJprjYwfz7/8jizG+48gHDUGDCgpNU5j+9iHpwYm9+rU1kge0R1OFAPqlxVdT8HkaYAgDIMh7D8I6piPNMju/LaXzV8Ue0xTe/iEOM6eGRj8Onae87h2O4fkwxJW1GUHlr4gnMjaIFB8Pr+Oseupj6aTp6oh0K0wt1yZ/20dOsIszcjbZv6Ci9YQmOn4i4+Res9yjP0jN7G+obY5DRYrFYLBaLxWKxWCwWi8VisVgsFovFYrFYLBbL/4S/AJbXawuE1ky8AAAAAElFTkSuQmCC"
+                    class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{user.username}}</h5>
+                    <p class="card-text">{{user.name}}</p>
+                    <p class="card-text">
+                        <fa-icon [icon]="faEnvelope"></fa-icon>
+                        {{user.email}}
+                    </p>
+                    3.9
+                    <fa-icon [icon]="faStar"></fa-icon>
+                    <p class="card-text">
+                        <fa-icon [icon]="faPhone"></fa-icon>
+                        {{user.phone}}
+                    </p>
+                    <p class="card-text">{{user.address.city}}</p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    <div class='row'>
+        <div class='col-sm-6 offset-3 text-center'>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-directives',
@@ -10,6 +11,7 @@ import { FormsModule } from '@angular/forms';
   ],
   templateUrl: './directives.html',
   styleUrl: './directives.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class Directives {
   num: number = 4;
@@ -21,7 +23,14 @@ export class Directives {
     { eId: 102, name: 'sita', sal: 9000, gender: 'female' },
     { eId: 105, name: 'deepak', sal: 8000, gender: 'male' },
   ];
-
+  
+ employees2 = [
+    { eId: 101, name: 'sanjay', sal: 50000, gender: 'male',role: 'Manager', status: 'Active' },
+    { eId: 104, name: 'geeta', sal: 8000, gender: 'female',role: 'Tester', status: 'Inactive' },
+    { eId: 103, name: 'sameer', sal: 7000, gender: 'male',role: 'Developer', status: 'Inactive'},
+    { eId: 102, name: 'sita', sal: 90000, gender: 'female',role: 'Manager', status: 'Active' },
+    { eId: 105, name: 'deepak', sal: 80000, gender: 'male',role: 'Developer', status: 'Active'},
+  ];
 
      tasks = [
     { id: 1, title: 'Complete Angular assignment', completed: false },
@@ -110,4 +119,5 @@ export class Directives {
     return sum;
   }
 
+  
 }

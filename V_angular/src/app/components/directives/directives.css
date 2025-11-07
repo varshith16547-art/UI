@@ -1,0 +1,21 @@
+
+.inactive {
+  opacity: 0.3;
+}
+
+.row-manager td {
+  background-color: lightyellow ;
+}
+
+.row-developer td {
+  background-color: lightblue ;
+}
+
+.row-tester td {
+  background-color: lightpink ;
+}
+.manager-style {
+  font-weight: bold ;
+  color: blue ;
+}
+
