@@ -16,6 +16,5 @@ export class AgePipe implements PipeTransform {
   const ddiff = today.getDate()-obj.getDate();
   if(mdiff<0||(mdiff===0 && ddiff<0)) age--;
   return age
-      
   }
 }

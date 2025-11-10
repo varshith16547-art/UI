@@ -1,0 +1,29 @@
+<div class="border p-2 shadow-sm">
+  <h6 class="text-center fw-bold">Employee Table</h6>
+  <table class="table table-bordered table-sm text-center align-middle">
+    <thead class="table-secondary">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Salary</th>
+        <th>Role</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (emp of empList; track $index) {
+        <tr>
+          <td>{{ emp.eId }}</td>
+          <td>{{ emp.name }}</td>
+          <td>{{ emp.sal }}</td>
+          <td>{{ emp.role }}</td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="sendDelete(emp.eId)">
+              Del
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

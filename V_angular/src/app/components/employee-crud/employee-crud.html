@@ -1,0 +1,16 @@
+<div class="container border p-3 mt-3">
+  <h4 class="text-center text-primary">Employee CRUD</h4>
+  <div class="row">
+    <div class="col-md-7">
+      <app-employee-table
+        [empList]="employees"
+        (deleteEmpEvent)="deleteEmployee($event)">
+      </app-employee-table>
+    </div>
+    <div class="col-md-5">
+      <app-employee-add
+        (addEmpEvent)="addEmployee($event)">
+      </app-employee-add>
+    </div>
+  </div>
+</div>

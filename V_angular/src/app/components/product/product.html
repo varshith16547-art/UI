@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    @for (product of allProducts; track $index) {
+      <div class="col-sm-3">
+        <app-cardproduct
+          [product]="product"
+          (productSelected)="add($event)">
+        </app-cardproduct>
+      </div>
+    }
+  </div>
+
+  <div class="mt-4">
+    <h5>Cart Items ({{ cartItems.length }})</h5>
+    <ul>
+      @for (item of cartItems; track $index) {
+        <li>{{ item.title }} — ${{ item.price }}</li>
+      }
+    </ul>
+  </div>
+</div>

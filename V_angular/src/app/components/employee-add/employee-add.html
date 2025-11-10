@@ -1,0 +1,25 @@
+<div class="border p-2 shadow-sm">
+  <h6 class="text-center fw-bold">Employee Add</h6>
+
+  <div class="mb-2">
+    <label>ID</label>
+    <input type="number" class="form-control" [(ngModel)]="eId" name="eId" />
+  </div>
+
+  <div class="mb-2">
+    <label>Name</label>
+    <input type="text" class="form-control" [(ngModel)]="name" name="name" />
+  </div>
+
+  <div class="mb-2">
+    <label>Salary</label>
+    <input type="number" class="form-control" [(ngModel)]="sal" name="sal" />
+  </div>
+
+  <div class="mb-2">
+    <label>Role</label>
+    <input type="text" class="form-control" [(ngModel)]="role" name="role" />
+  </div>
+
+  <button class="btn btn-primary w-100" (click)="addEmployee()">Add</button>
+</div>
